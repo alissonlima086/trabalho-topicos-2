@@ -1,0 +1,47 @@
+<div class="navbar">
+  <a routerLink="/dashboard">Meus Dados</a>
+  <a routerLink="/pedidos">Meus Pedidos</a>
+  <a routerLink="/meus-pets">Meus Pets</a>
+  <a routerLink="/alterar-info">Alterar Informações</a>
+  <a routerLink="/seguranca">Segurança</a>
+  <a routerLink="/meus-cartoes">Pagamento</a>
+  <a routerLink="/ver-endereco">Endereço</a>
+</div>
+
+<div *ngIf="compras.length > 0; else noCompras" class="compra-container">
+  <h2>Minhas Compras</h2>
+  <div *ngFor="let compra of compras.reverse()" class="compra-card">
+      <div class="compra-header">
+        <p id="status">Status: {{ getStatusLabel(compra.statusCompra) }}</p>
+        <p>Data da Compra: {{ compra.dataCompra | date:'dd/MM/yyyy' }}</p>
+        <p>Preço Total: R$ {{ compra.precoTotal | number:'1.2-2' }}</p>
+      </div>
+      <div class="compra-details">
+        <div class="compra-additional-info">
+          <h3>Informações:</h3>
+          <div *ngIf="compra.endereco">
+            <p>Endereço de Entrega: {{ compra.endereco.logradouro }}, {{ compra.endereco }}</p>
+          </div>
+          <div *ngIf="compra.cartao">
+            <p>Cartão de Crédito: {{ compra.cartao }}</p>
+          </div>
+        </div>
+        <button (click)="toggleItens(compra)">Expandir/Recolher</button>
+        <ul class="compra-item-list" *ngIf="compra.itens && itensExpandidos[compra.id]">
+          <h3>Itens da Compra:</h3>
+            <li *ngFor="let item of compra.itens" class="compra-item">
+                <p>Produto: {{ item.nome }}</p>
+                <p>Preço: R$ {{ item.precoUnitario | number:'1.2-2' }}</p>
+                <p>Quantidade: {{ item.quantidade }}</p>
+            </li>
+        </ul>
+      </div>
+      <div class="compra-footer">
+        <!-- Adicione qualquer conteúdo adicional para o rodapé aqui -->
+      </div>
+  </div>
+</div>
+
+<ng-template #noCompras>
+  <p class="no-compras">Nenhuma compra encontrada.</p>
+</ng-template>

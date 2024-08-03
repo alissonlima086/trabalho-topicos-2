@@ -1,0 +1,116 @@
+.dashboard-container {
+  max-width: 800px;
+  margin: auto;
+  /* Centraliza horizontalmente */
+  padding: 20px;
+  background-color: #f0f8ff;
+  /* Light blue background */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  display: flex;
+  /* Usando flexbox */
+  flex-direction: column;
+  /* Empilha os itens verticalmente */
+}
+
+
+.content {
+  text-align: center;
+  flex: 1;
+  /* Ocupa todo o espaço disponível */
+}
+
+h1 {
+  color: #007BFF;
+  /* Blue color */
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-item label {
+  font-weight: bold;
+  color: #555;
+  margin-right: 10px;
+}
+
+.info-item span {
+  color: #333;
+}
+
+.dashboard-container::before {
+
+  display: block;
+  height: 200px;
+  width: 100%;
+  background: url('https://example.com/banner.jpg') no-repeat center center;
+  background-size: cover;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #007BFF;
+  padding: 15px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 15px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.image-container {
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.row center-xs {
+  padding-bottom: 3%;
+}
+

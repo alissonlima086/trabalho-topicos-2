@@ -1,0 +1,28 @@
+<div class="login-container">
+    <div class="login-box">
+        <h2 class="login-title">Cadastrar</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onRegister()">
+            <mat-form-field class="login-input">
+                <input matInput placeholder="Nome" formControlName="nome" required>
+                <mat-error *ngIf="loginForm.get('nome')!.hasError('required')">O nome é obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field class="login-input">
+                <input matInput placeholder="Sobrenome" formControlName="sobrenome" required>
+                <mat-error *ngIf="loginForm.get('sobrenome')!.hasError('required')">O sobrenome é obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field class="login-input">
+                <input matInput placeholder="Email" formControlName="email" required>
+                <mat-error *ngIf="loginForm.get('email')!.hasError('required')">O email é obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field class="login-input">
+                <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="senha" autocomplete="off" placeholder="Senha" formControlName="senha">
+                <button mat-icon-button matSuffix type="button" (click)="toggleSenhaVisivel()">
+                    <mat-icon>{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.get('senha')!.hasError('required')">A senha é obrigatória</mat-error>
+            </mat-form-field>
+            
+            <button mat-raised-button class="login-button" color="primary" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>

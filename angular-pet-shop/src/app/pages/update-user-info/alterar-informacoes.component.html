@@ -1,0 +1,42 @@
+<div class="navbar">
+  <a routerLink="/dashboard">Meus Dados</a>
+  <a routerLink="/pedidos">Meus Pedidos</a>
+  <a routerLink="/meus-pets">Meus Pets</a>
+  <a routerLink="/alterar-info">Alterar Informações</a>
+  <a routerLink="/seguranca">Segurança</a>
+  <a routerLink="/meus-cartoes">Pagamento</a>
+  <a routerLink="/ver-endereco">Endereço</a>
+</div>
+
+
+<div class="alterar-informacoes-container">
+  <h1>Alterar Informações</h1>
+  <form (ngSubmit)="abrirModalConfirmacao()" [formGroup]="formAlterarInformacoes">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" formControlName="nome">
+    </div>
+    <div class="form-group">
+      <label for="sobrenome">Sobrenome:</label>
+      <input type="text" id="sobrenome" formControlName="sobrenome">
+    </div>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="username">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" formControlName="cpf" mask="000.000.000-00">
+      <div *ngIf="formAlterarInformacoes.get('cpf')?.errors?.['invalidCpf'] && formAlterarInformacoes.get('cpf')?.touched">
+        <small class="error">O CPF deve ter 11 dígitos.</small>
+      </div>
+    </div>
+    <button type="submit" [disabled]="formAlterarInformacoes.invalid">Salvar Alterações</button>
+  </form>
+
+  <app-confirmar-senha *ngIf="modalAberto" (fechar)="fecharModal()" (confirmar)="salvarAlteracoes()"></app-confirmar-senha>
+</div>

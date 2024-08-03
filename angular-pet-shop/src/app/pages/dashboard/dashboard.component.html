@@ -1,0 +1,53 @@
+<div class="navbar">
+  <a routerLink="/dashboard">Meus Dados</a>
+  <a routerLink="/pedidos">Meus Pedidos</a>
+  <a routerLink="/meus-pets">Meus Pets</a>
+  <a routerLink="/alterar-info">Alterar Informações</a>
+  <a routerLink="/seguranca">Segurança</a>
+  <a routerLink="/meus-cartoes">Pagamento</a>
+  <a routerLink="/ver-endereco">Endereço</a>
+</div>
+
+<div class="dashboard-container">
+  <div class="content">
+    <h1>Meus Dados</h1>
+
+    <div class="col-xs-6">
+      <div class="row center-xs">
+        <div class="image-container" *ngIf="urlImagem">
+          <a (click)="profileUpload.click()">
+            <img [src]="urlImagem" alt="Profile" class="profile-image">
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <input hidden type="file" #profileUpload (change)="onImageSelected($event)">
+        <!-- Botão de upload visível apenas quando uma imagem é selecionada -->
+        <button mat-raised-button color="primary" (click)="onUpload()" *ngIf="selectedFile">Confirmar</button>
+      </div>
+    </div>
+  
+    <div class="user-info">
+      <div class="info-item">
+        <label>Nome:</label>
+        <span>{{ usuario?.nome ? usuario.nome + ' ' + usuario.sobrenome : '' }}</span>
+      </div>
+      <div class="info-item">
+        <label>Email:</label>
+        <span>{{ usuario?.email }}</span>
+      </div>
+      <div class="info-item">
+        <label>Username:</label>
+        <span>{{ usuario?.username }}</span>
+      </div>
+      <div class="info-item">
+        <label>CPF:</label>
+        <span>{{ formatarCPF(usuario?.cpf) }}</span>
+      </div>
+    </div>
+  </div>
+</div>
